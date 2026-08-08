@@ -19,8 +19,8 @@ from telethon.tl.functions.messages import ImportChatInviteRequest
 # ============================================================
 # 🔥 بيانات الاتصال الأساسية والتكوين الشامل
 # ============================================================
-API_ID = 6
-API_HASH = "eb06d4abfb49dc3eeb1aeb989ae0f581e"
+API_ID = 2040
+API_HASH = "b18441a1ed609e120130337f4ad94be2"
 BOT_TOKEN = "8958079044:AAGuF319LFTe3hQymkw-T4iPFkIPVqA-XVU"
 OWNER_ID = 8345875922
 OWNER_USERNAME = "@UE_SH"
