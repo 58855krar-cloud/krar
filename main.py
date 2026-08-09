@@ -38,7 +38,7 @@ API_ID = 6
 API_HASH = "eb06d4abfb49dc3eeb1aeb98ae0f581e"
 
 
-#bot = TelegramClient('bot_session', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
+bot = TelegramClient('bot_session', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
 
 # ============================================================
 
@@ -421,22 +421,11 @@ async def interactive_login_handler(event):
 
 def main():
     init_db()
+    keep_alive()  # تشغيل سيرفر Flask لـ Render
     logger.info("🔥 سورس القائد أبو الكرار يعمل بكامل طاقته...")
     
-    # تشغيل سيرفر Flask للبقاء متصلاً
-    keep_alive()
-    
-    # إنشاء تطبيق البوت
-    app = ApplicationBuilder().token(BOT_TOKEN).build()
-    
-    # إضافة معالج أمر /start
-    async def start_handler(update, context):
-        await update.message.reply_text("⚡ أهلاً بك! السورس المركزي يعمل بنجاح وبكامل ميزاته.")
-        
-    app.add_handler(CommandHandler("start", start_handler))
-    
-    # بدء الاستماع للرسائل
-    app.run_polling()
+    bot.start(bot_token=BOT_TOKEN)
+    bot.run_until_disconnected()
 
 if __name__ == '__main__':
     main()
