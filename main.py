@@ -23,7 +23,13 @@ def run():
     port = int(os.environ.get("PORT", 8080))
     app.run(host='0.0.0.0', port=port)
 
-Thread(target=run).start()
+def keep_alive():
+    t = Thread(target=run)
+    t.daemon = True
+    t.start()
+
+keep_alive()
+
 
 from telethon import TelegramClient, events
 
