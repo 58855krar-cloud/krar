@@ -19,8 +19,9 @@ BOT_TOKEN = "8958079044:AAGuF319LFTe3hQymkw-T4iPFkIPVqA-XVU"
 
 OWNER_ID = 8345875922
 OWNER_USERNAME = "@UE_SH"
-API_ID = 26521501
-API_HASH = "8f3812eebeeb030fb8d4b3dfd9f1e16f"
+API_ID = 6
+API_HASH = "eb06d4abfb49dc3eeb1aeb98ae0f581e"
+
 
 bot = TelegramClient('bot_session', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
 
