@@ -423,13 +423,19 @@ def main():
     init_db()
     logger.info("🔥 سورس القائد أبو الكرار يعمل بكامل طاقته...")
     
-    # تشغيل السيرفر لحفظ الجلسة
+    # تشغيل سيرفر Flask للبقاء متصلاً
     keep_alive()
     
-    # تشغيل البوت عبر ApplicationBuilder
+    # إنشاء تطبيق البوت
     app = ApplicationBuilder().token(BOT_TOKEN).build()
     
-    # ربط معالجة الأحداث بالأوامر (إذا كانت موجودة لديك في السورس)
+    # إضافة معالج أمر /start
+    async def start_handler(update, context):
+        await update.message.reply_text("⚡ أهلاً بك! السورس المركزي يعمل بنجاح وبكامل ميزاته.")
+        
+    app.add_handler(CommandHandler("start", start_handler))
+    
+    # بدء الاستماع للرسائل
     app.run_polling()
 
 if __name__ == '__main__':
