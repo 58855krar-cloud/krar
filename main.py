@@ -38,7 +38,7 @@ API_ID = 6
 API_HASH = "eb06d4abfb49dc3eeb1aeb98ae0f581e"
 
 
-bot = TelegramClient('bot_session', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
+bot = TelegramClient('bot_session', API_ID, API_HASH)
 
 # ============================================================
 
@@ -415,13 +415,9 @@ async def interactive_login_handler(event):
             del user_states[user_id]
             await event.reply(f"❌ خطأ في كلمة المرور: `{str(e)}`")
 
-# ===================================================
-# تشغيل البوت النهائي 🚀
-# ===================================================
-
 def main():
     init_db()
-    keep_alive()  # تشغيل سيرفر Flask لـ Render
+    keep_alive()  # يشغل السيرفر في الخلفية
     logger.info("🔥 سورس القائد أبو الكرار يعمل بكامل طاقته...")
     
     bot.start(bot_token=BOT_TOKEN)
@@ -429,3 +425,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
