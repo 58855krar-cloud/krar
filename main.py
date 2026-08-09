@@ -41,7 +41,7 @@ os.makedirs(DATA_DIR, exist_ok=True)
 # ============================================================
 # 🤖 تشغيل البوت الرئيسي لتيليثون
 # ============================================================
-bot = TelegramClient("AbuAlKrar_Bot", API_ID, API_HASH).start(bot_token=BOT_TOKEN)
+bot = TelegramClient("Krar_New_Session", API_ID, API_HASH).start(bot_token=BOT_TOKEN)
 
 # حالات مؤقتة لتسجيل الدخول التفاعلي للمستخدمين (الهاتف والرمز وكلمة المرور)
 user_states = {}
