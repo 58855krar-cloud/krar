@@ -15,7 +15,7 @@ from telethon import TelegramClient, events
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
-BOT_TOKEN = "8958079044:AAGuF319LFTe3hQymkw-T4iPFkIPVqA-XVU"
+BOT_TOKEN = "8958079044:AAG-_32kjtqDLbfngkdSEn6MseP1_8Kwyao"
 
 OWNER_ID = 8345875922
 OWNER_USERNAME = "@UE_SH"
