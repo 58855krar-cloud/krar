@@ -33,8 +33,7 @@ os.makedirs(DATA_DIR, exist_ok=True)
 # ============================================================
 # 🤖 تشغيل البوت الرئيسي لتيليثون
 # ============================================================
-app = ApplicationBuilder().token(BOT_TOKEN).build()
-app.run_polling()
+
 
 
 # حالات مؤقتة لتسجيل الدخول التفاعلي للمستخدمين (الهاتف والرمز وكلمة المرور)
@@ -400,8 +399,6 @@ async def main():
     logger.info("🔥 سورس القائد أبو الكرار يعمل بكامل طاقته...")
     await bot.run_until_disconnected()
 
-if __name__ == "__main__":
-    try:
-        asyncio.run(main())
-    except KeyboardInterrupt:
-        logger.info("⏹️ تم إيقاف السورس يدوياً.")
+if __name__ == '__main__':
+    app = ApplicationBuilder().token(BOT_TOKEN).build()
+    app.run_polling()
