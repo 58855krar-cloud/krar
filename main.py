@@ -415,14 +415,22 @@ async def interactive_login_handler(event):
             del user_states[user_id]
             await event.reply(f"❌ خطأ في كلمة المرور: `{str(e)}`")
 
-# ============================================================
-# 🚀 تشغيل البوت النهائي
-# ============================================================
-async def main():
+# ===================================================
+# تشغيل البوت النهائي 🚀
+# ===================================================
+
+def main():
     init_db()
     logger.info("🔥 سورس القائد أبو الكرار يعمل بكامل طاقته...")
-    await bot.run_until_disconnected()
+    
+    # تشغيل السيرفر لحفظ الجلسة
+    keep_alive()
+    
+    # تشغيل البوت عبر ApplicationBuilder
+    app = ApplicationBuilder().token(BOT_TOKEN).build()
+    
+    # ربط معالجة الأحداث بالأوامر (إذا كانت موجودة لديك في السورس)
+    app.run_polling()
 
 if __name__ == '__main__':
-    app = ApplicationBuilder().token(BOT_TOKEN).build()
-    app.run_polling()
+    main()
