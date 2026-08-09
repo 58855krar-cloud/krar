@@ -10,17 +10,9 @@ import time
 import random
 import json
 import sys
-from datetime import datetime, timedelta
-from telethon import TelegramClient, events, types
-from telethon.errors import SessionPasswordNeededError
-from telethon.tl.functions.channels import LeaveChannelRequest, JoinChannelRequest
-from telethon.tl.functions.messages import ImportChatInviteRequest
+from telegram import Update
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
-# ============================================================
-# 🔥 بيانات الاتصال الأساسية والتكوين الشامل
-# ============================================================
-API_ID = 2040
-API_HASH = "b18441a1ed609e120130337f4ad94be2"
 BOT_TOKEN = "8958079044:AAGuF319LFTe3hQymkw-T4iPFkIPVqA-XVU"
 OWNER_ID = 8345875922
 OWNER_USERNAME = "@UE_SH"
@@ -41,7 +33,9 @@ os.makedirs(DATA_DIR, exist_ok=True)
 # ============================================================
 # 🤖 تشغيل البوت الرئيسي لتيليثون
 # ============================================================
-bot = TelegramClient("Krar_New_Session", API_ID, API_HASH).start(bot_token=BOT_TOKEN)
+app = ApplicationBuilder().token(BOT_TOKEN).build()
+app.run_polling()
+
 
 # حالات مؤقتة لتسجيل الدخول التفاعلي للمستخدمين (الهاتف والرمز وكلمة المرور)
 user_states = {}
