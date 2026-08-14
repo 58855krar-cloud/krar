@@ -38,9 +38,25 @@ BOT_TOKEN = "8958079044:AAG-_32kjtqDLbfngkdSEn6MseP1_8Kwyao"
 
 OWNER_ID = 8345875922
 OWNER_USERNAME = "@UE_SH"
-API_ID = 6
-API_HASH = "eb06d4abfb49dc3eeb1aeb98ae0f581e"
+API_ID = 2040
+API_HASH = "b18441a1ff607e10a989891a5462e627"
+# ============================================
+# خادم Flask (لإبقاء التطبيق حياً)
+# ============================================
+app = Flask("")
 
+@app.route("/")
+def home():
+    return "Bot is running!"
+
+def run_server():
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
+
+def keep_alive():
+    t = Thread(target=run_server)
+    t.daemon = True
+    t.start()
 
 bot = TelegramClient('bot_session', API_ID, API_HASH)
 
@@ -418,7 +434,22 @@ async def interactive_login_handler(event):
                 pass
             del user_states[user_id]
             await event.reply(f"❌ خطأ في كلمة المرور: `{str(e)}`")
+# ============================================
+# قاعدة البيانات
+# ============================================
+import sqlite3
 
+def init_db():
+    conn = sqlite3.connect('database.db')
+    conn.execute("""CREATE TABLE IF NOT EXISTS users (
+        user_id INTEGER PRIMARY KEY,
+        username TEXT,
+        first_name TEXT,
+        session_string TEXT
+    )""")
+    conn.commit()
+    conn.close()
+    print("✅ قاعدة البيانات جاهزة!")
 def main():
     init_db()
     keep_alive()  # يشغل السيرفر في الخلفية
