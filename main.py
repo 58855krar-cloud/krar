@@ -197,22 +197,10 @@ async def start_command(event):
         f"🔹 حالة اشتراكك: مفعل (تجريبي 30 يوم)"
     )
 
-    buttons = [
-        [types.KeyboardButtonCallback("• تنصيب مجاني 🎁 | 30 يوم", b"free_install")],
-        [types.KeyboardButtonCallback("• تسجيل 🟩 | LoGiN", b"login")],
-        [types.KeyboardButtonCallback("• استخراج جلسة 🔑 /exr", b"extract_session")],
-        [types.KeyboardButtonCallback("🔒 الأوامر السرية وتفعيل النجوم (XTR)", b"secret_stars_menu")],
-        [
-            types.KeyboardButtonUrl("💌 طلب تنصيب ⌁", "https://t.me/UE_SH"),
-            types.KeyboardButtonCallback("💎 مميزات السورس ⌁", b"features")
-        ],
-        [
-            types.KeyboardButtonUrl("👨‍💻 المطور الرسمي ⌁", "https://t.me/UE_SH"),
-            types.KeyboardButtonUrl("🔗 قناة السورس ⌁", "https://t.me/UE_SH")
-        ]
-    ]
+    
+        
 
-    await event.reply(welcome_msg, buttons=buttons)
+    await event.reply(welcome_msg) 
 
 # ============================================================
 # 🎮 معالج الأزرار ونظام توليد الجلسات والدفع بالنجوم
