@@ -30,7 +30,8 @@ Thread(target=run_server, daemon=True).start()
 
 
 from telethon import TelegramClient, events
-
+from telethon.sessions import StringSession
+from telethon.errors import SessionPasswordNeededError
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
@@ -58,7 +59,8 @@ def keep_alive():
     t.daemon = True
     t.start()
 
-bot = TelegramClient('bot_session', API_ID, API_HASH)
+SESSION_STRING = os.environ.get("SESSION_STRING", "")
+bot = TelegramClient(StringSession(SESSION_STRING), API_ID, API_HASH)
 
 # ============================================================
 
@@ -455,7 +457,7 @@ def main():
     keep_alive()  # يشغل السيرفر في الخلفية
     logger.info("🔥 سورس القائد أبو الكرار يعمل بكامل طاقته...")
     
-    bot.start(bot_token=BOT_TOKEN)
+    bot.start()
     bot.run_until_disconnected()
 
 if __name__ == '__main__':
