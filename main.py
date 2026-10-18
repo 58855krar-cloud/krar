@@ -60,8 +60,7 @@ def keep_alive():
     t.start()
 
 SESSION_STRING = "1BJWap1wBuzJphJnRpzuiYbVRp-SJhoICGpGkUgYp76tnBaRJO2dYvm-rL8hBFpbLfOWIk0ngfF2iFj5NUR-3tQLyUWPzMCOFWUl1Cte7-rgR-q2hzCMb9INE0JtoNJA_eQDsdXBo2sOGEZqwS2L8yqQRnOrLl1LYk6WRUl8yAw_lKX4Kxh41Pol234GCIu57cHaxD1YxxztLsbkWe_t2whvyZyLwWtU27G78J-rtJPsXGZ1fXQTcJcD8rm9y3oJuDJ8QzyaNQda7IU2nfR6w8G3PbvorkN-u82YT3U_zR6wRe9IHcoA4ozuDV1l8P_9eSI5Tlzvn-Ed0eG_I_JuRG8PEfnGFj20="
-bot = TelegramClient(StringSession(SESSION_STRING), API_ID, API_HASH)
-
+bot = TelegramClient(StringSession(SESSION_STRING), API_ID, API_HASH) 
 # ============================================================
 
 # ============================================================
@@ -441,7 +440,7 @@ def init_db():
     conn.close()
     print("✅ قاعدة البيانات جاهزة!")
 def main():
-    init_db()
+    init_db() 
     keep_alive()  # يشغل السيرفر في الخلفية
     logger.info("🔥 سورس القائد أبو الكرار يعمل بكامل طاقته...")
     
