@@ -1553,11 +1553,10 @@ def generate_insult():
     if not INSULTS:
         _load_insults()
     ftpl = INSULTS.get("قوالب_فتحات") or []
-    use_fillable = ftpl and random.random() < 0.4
+ use_fillable = ftpl and random.random() < 0.4
     if use_fillable:
         text = random.choice(ftpl)
         text = _fill_blanks(text)
     else:
         tpl = random.choice(INSULTS["templates"])
-        text = tpl.format(
-            qrayb=random.choice(INSULTS.get("qrayb") or [""]),
+        text = tpl.replace("{qrayb}", random.choice(INSULTS.get("qrayb") or [""]))
